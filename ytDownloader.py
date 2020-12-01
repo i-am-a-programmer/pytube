@@ -21,7 +21,8 @@ def show_progress_bar(stream, file_handle, bytes_remaining):
 
 while True:
 	try:
-		ytLink = input ('Enter youtube video link to download (q=exit) : ')
+		ytLink = input ('Enter youtube video link to download (q=exit) : ')					# FOR PYTHON 3
+		#ytLink = raw_input ('Enter youtube video link to download (q=exit) : ')			# FOR PYTHON 2
 		if ytLink == 'q' or ytLink == 'Q':
 			exit()
 		yt = pytube.YouTube(ytLink, on_progress_callback=show_progress_bar)
@@ -49,17 +50,17 @@ print ('----------------------------------------------------------------')
 print ()
 
 for st in video_audio.order_by('resolution'):
-	print (f'Code {st.itag} : {st.resolution}  {v_a}')
+	print ('Code {0} : {1}  {2}'.format(st.itag, st.resolution, v_a))
 
 print ()
 
 for st in only_video.order_by('resolution'):
-	print (f'Code {st.itag} : {st.resolution}  {v}')
+	print ('Code {0} : {1}  {2}'.format(st.itag, st.resolution, v))
 
 print ()
 
 for st in only_audio:
-	print (f'Code {st.itag} : {st.abr}  {a}')
+	print ('Code {0} : {1}  {2}'.format(st.itag, st.abr, a))
 
 print ()
 
@@ -70,7 +71,8 @@ print ()
 
 while True:
 	try:
-		download_code = input ('Enter a code to download (q=exit) :')
+		download_code = input ('Enter a code to download (q=exit) :')			# FOR PYTHON 3
+		#download_code = raw_input ('Enter a code to download (q=exit) :')		# FOR PYTHON 2
 		if download_code == 'q' or download_code == 'Q':
 			exit()
 		if req_streams.get_by_itag(download_code):
